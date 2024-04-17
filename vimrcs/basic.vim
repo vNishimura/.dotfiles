@@ -19,11 +19,10 @@ set backspace=indent,eol,start
 set shiftwidth=4 "tamanho do tab na indentacao
 set tabstop=4 softtabstop=4 "tab 4 espacos
 set smarttab "auto explicativo
-set expandtab "spaces, not tabs
+"set expandtab "spaces, not tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 "GERAL
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-set nu "numeros nas linhas
 set rnu "numero das linhas relativos ao da atual
 set wrap "linha n se separa ao sair da tela
 set cursorline "destaca linha atual
@@ -35,12 +34,21 @@ set title "muda titulo
 set scrolloff=8
 set noerrorbells "sem barulho chato
 set novisualbell
+set belloff=all "barulho chato voltou no kitty, tirando ele
 set signcolumn=yes
 " Retorna a posicao que estava quando o arquivo foi fechado
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
   \| exe "normal! g'\"" | endif
 endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"DESLIGANDO SETAS DO TECLADO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+  exec 'noremap' key '<Nop>'
+  exec 'inoremap' key '<Nop>'
+  exec 'cnoremap' key '<Nop>'
+endfor
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "PESQUISA
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,7 +83,7 @@ set nowritebackup
 """"""""""""""""""""""""""""""""""""""""""""""
 " Italic configuration
 " """"""""""""""""""""""""""""""""""""""""""""
-if $TERM != 'xterm-256color'
+if $TERM != 'xterm-kitty'
     set t_ZH=^[[3m
     set t_ZR=^[[23m]]]]
 endif
