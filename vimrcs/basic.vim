@@ -23,6 +23,7 @@ set smarttab "auto explicativo
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 "GERAL
 """""""""""""""""""""""""""""""""""""""""""""""""""""
+set nu "numero absoluto das linhas
 set rnu "numero das linhas relativos ao da atual
 set wrap "linha n se separa ao sair da tela
 set cursorline "destaca linha atual
